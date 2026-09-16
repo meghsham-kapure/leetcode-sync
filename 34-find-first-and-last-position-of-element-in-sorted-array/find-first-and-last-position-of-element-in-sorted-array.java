@@ -1,12 +1,7 @@
 class Solution {
 
     public int[] searchRange(int[] nums, int target) { 
-
-        int start = search(nums, target, true);  
-        int end = search(nums, target, false);
-
-        return new int [] { start, end }; 
-
+        return new int [] { search(nums, target, true), search(nums, target, false) }; 
     }
     
     public int search(int nums[], int target, boolean isFindingStart) { 
