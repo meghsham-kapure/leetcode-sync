@@ -14,7 +14,7 @@ class Solution {
     int result = binarySearch(target, mountainArr, true, peak);
 
     if (result == -1) {
-      result = binarySearch(target, mountainArr, false, peak);
+      result = binarySearch(target, mountainArr, false, peak+1);
     }
 
     System.out.println("result => " + result);
