@@ -4,10 +4,9 @@ public class Solution {
 
     int peak = findPeak(arr);
 
-    if (target >= arr[0])
-      return binarySearch(arr, target, 0, peak);
-    else
-      return binarySearch(arr, target, peak + 1, arr.length - 1);
+    return target >= arr[0] ? 
+        binarySearch(arr, target, 0, peak) : 
+        binarySearch(arr, target, peak + 1, arr.length - 1);
 
   }
 
@@ -16,13 +15,10 @@ public class Solution {
     while (start <= end) {
       int mid = start + (end - start) / 2;
 
-      if (arr[mid] == target)
-        return mid;
+      if (arr[mid] == target) return mid;
 
-      if (arr[mid] < target)
-        start = mid + 1;
-      else
-        end = mid - 1;
+      if (arr[mid] < target) start = mid + 1;
+      else end = mid - 1;
 
     }
 
@@ -37,10 +33,8 @@ public class Solution {
     while (start <= end) {
       int mid = start + (end - start) / 2;
 
-      if (arr[mid] >= arr[0])
-        start = mid + 1;
-      else
-        end = mid - 1;
+      if (arr[mid] >= arr[0]) start = mid + 1;
+      else end = mid - 1;
 
     }
 
