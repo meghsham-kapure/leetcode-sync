@@ -3,7 +3,6 @@ public class Solution {
   public int search(int[] arr, int target) {
 
     int peak = findPeak(arr);
-    int result = -1;
 
     if (target >= arr[0])
       return binarySearch(arr, target, 0, peak);
