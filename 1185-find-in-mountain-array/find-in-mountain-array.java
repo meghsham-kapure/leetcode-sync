@@ -17,12 +17,10 @@ class Solution {
       result = binarySearch(target, mountainArr, false, peak+1);
     }
 
-    System.out.println("result => " + result);
-
     return result;
   }
 
-  public int findPeak(MountainArray mountainArr) {
+    public int findPeak(MountainArray mountainArr) {
     int start = 0;
     int end = mountainArr.length()-1;
 
@@ -50,7 +48,6 @@ class Solution {
     while (start <= end) {
 
       int mid = start + (end - start) / 2;
-    System.out.println("mid => " + mid);
 
       int midValue = mountainArr.get(mid);
 
@@ -85,6 +82,5 @@ class Solution {
     }
 
     return -1;
-
   }
 }
