@@ -3,14 +3,8 @@ public class Solution {
   public int search(int[] arr, int target) {
 
     int peak = findPeak(arr);
-        System.out.println(arr[peak]);
-
     int result = -1;
 
-    // if (arr.length < 3) {
-    //   result = binarySearch(arr, target, 0, arr.length - 1);
-    //   return result;
-    // }
     if (target >= arr[0])
       result = binarySearch(arr, target, 0, peak);
     else
