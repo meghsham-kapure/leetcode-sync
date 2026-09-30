@@ -1,39 +1,33 @@
-
-
 class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        int row = searchRow(matrix, target);
 
-    public boolean searchMatrix(int[][] arr, int target) {
+        if (row == -1) return false;
+        
+        int foundOnColumn = searchTargetOnColumn(matrix, target, row);
 
-        int possibleRow = searchPossibleRow(arr, target);
+        return foundOnColumn!=-1? true : false;
 
-        if (possibleRow != -1) {
-            return rowBinarySearch(arr, target, possibleRow);
-        }
-
-        return false;
     }
 
-    public int searchPossibleRow(int arr[][], int target){
+    public int searchRow(int[][] matrix, int target){
         int start = 0;
-        int end = arr.length-1;
+        int end =  matrix.length - 1;
 
+        while (start <= end ){
+            int mid = start + ( end - start) / 2;
 
-        while (start <= end){
-            int mid = start + (end - start) / 2;
+            int first = matrix[mid][0]; 
+            int last = matrix[mid][matrix[mid].length-1];
 
-
-            if (
-                arr[mid][0]<=target && 
-                arr[mid][arr[mid].length-1]>=target
-            ) {
+            if (target >= first && target <= last){
                 return mid;
-            }
-
-            else{
-                if (target <arr[mid][0]){
-                    end = mid -1;
-                }else if(target > arr[mid][ arr[mid].length-1 ]){
-                    start =mid+1;
+            } else{
+                if (target < first){
+                    end = mid - 1;
+                }else if (target > last) {
+                    start = mid + 1;
                 }
             }
         }
@@ -41,26 +35,22 @@ class Solution {
         return -1;
     }
 
-        public boolean rowBinarySearch (int arr[][], int target, int rowNumber){
-                    int start = 0;
-                    int end = arr[rowNumber].length - 1;
-        while (start <= end){
-            int mid = start + (end-start) /2;
+    public int searchTargetOnColumn(int[][] matrix, int target, int row){
+        int start = 0;
+        int end = matrix[row].length-1;
 
-            if (arr[rowNumber][mid]==target){
-                return true;
+        while (start <= end ){
+            int mid = start + ( end - start) / 2;
+
+            if (matrix[row][mid] == target){
+                return mid;
+            }else if (matrix[row][mid]< target){
+                start = mid +1;
             }else{
-                if (arr[rowNumber][mid]>target){
-                    end = mid - 1;
-
-                }else{
-                    start = mid + 1;
-
-                }
+                end = mid - 1; 
             }
         }
 
-           return false;
-        }
-
+        return -1;
     }
+}
