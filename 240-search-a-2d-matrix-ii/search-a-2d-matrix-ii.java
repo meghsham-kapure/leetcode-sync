@@ -1,5 +1,8 @@
 class Solution {
     public boolean searchMatrix(int arr[][], int target){
+
+        if (arr == null || arr.length == 0) return false;
+
         int row = 0;
         int column = arr[0].length - 1;
 
